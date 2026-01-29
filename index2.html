@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABHYUDAYA 2K26 - Ashoka Sangha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a14;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .poster-container {
+            width: 700px;
+            height: 1050px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: #0a0a14;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Advanced CSS Background with enhanced depth */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(140, 90, 210, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 35%, rgba(30, 160, 230, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 50% 85%, rgba(230, 60, 130, 0.2) 0%, transparent 55%),
+                linear-gradient(135deg, #0a0a14 0%, #0e0e1a 100%);
+            overflow: hidden;
+        }
+
+        .animated-mesh {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(120, 90, 255, 0.15) 2%, transparent 6%),
+                radial-gradient(circle at 70% 60%, rgba(255, 120, 120, 0.12) 1%, transparent 5%),
+                radial-gradient(circle at 40% 80%, rgba(120, 210, 255, 0.13) 3%, transparent 7%);
+            background-size: 120px 120px;
+            animation: none; /* Disabled for static capture */
+            z-index: 1;
+        }
+
+        .gradient-spot {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.5;
+            animation: none; /* Disabled for static capture */
+        }
+
+        .spot-1 {
+            width: 380px;
+            height: 380px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            top: -120px;
+            left: -120px;
+        }
+
+        .spot-2 {
+            width: 320px;
+            height: 320px;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .spot-3 {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            top: 35%;
+            left: 80%;
+        }
+
+        /* ENHANCED: Background Icons - Significantly Improved Visibility */
+        .background-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            opacity: 0.25; /* Increased from 0.12 to 0.25 */
+            filter: brightness(1.2);
+        }
+
+        .icon {
+            position: absolute;
+            font-size: 48px; /* Slightly larger for better visibility */
+            color: rgba(255, 255, 255, 0.7); /* Much brighter - increased from 0.4 to 0.7 */
+            filter: 
+                drop-shadow(0 6px 12px rgba(0,0,0,0.5))
+                drop-shadow(0 0 20px rgba(255, 255, 255, 0.2)); /* Added glow shadow */
+            animation: none; /* Disabled for static capture */
+            text-shadow: 
+                0 0 25px rgba(255, 255, 255, 0.3), /* Stronger glow */
+                0 0 40px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            will-change: transform, filter;
+            opacity: 0.85; /* Added base opacity */
+        }
+
+        /* ENHANCED: Hover effects for icons */
+        .icon:hover {
+            opacity: 1;
+            filter: 
+                drop-shadow(0 8px 16px rgba(0,0,0,0.6))
+                drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+            transform: scale(1.1) rotate(5deg);
+            text-shadow: 
+                0 0 35px rgba(255, 255, 255, 0.5),
+                0 0 60px rgba(255, 255, 255, 0.2);
+            z-index: 3;
+        }
+
+        /* Cultural Icons - Enhanced Positioning */
+        .icon-music { top: 8%; left: 5%; --rotation: -15deg; color: rgba(255, 100, 100, 0.8); }
+        .icon-microphone { top: 15%; left: 18%; --rotation: 20deg; color: rgba(255, 150, 50, 0.8); }
+        .icon-book { top: 25%; left: 8%; --rotation: 10deg; color: rgba(100, 200, 255, 0.8); }
+        .icon-debate { top: 35%; left: 22%; --rotation: -20deg; color: rgba(200, 100, 255, 0.8); }
+        .icon-quiz { top: 10%; right: 8%; --rotation: 25deg; color: rgba(255, 200, 50, 0.8); }
+        .icon-speak { top: 20%; right: 5%; --rotation: -15deg; color: rgba(100, 255, 200, 0.8); }
+        .icon-singing { top: 30%; right: 18%; --rotation: 15deg; color: rgba(255, 100, 200, 0.8); }
+        .icon-drama { top: 40%; left: 32%; --rotation: -25deg; color: rgba(50, 150, 255, 0.8); }
+        .icon-art { top: 5%; left: 28%; --rotation: 30deg; color: rgba(255, 150, 100, 0.8); }
+        .icon-culture { top: 45%; left: 12%; --rotation: -10deg; color: rgba(150, 100, 255, 0.8); }
+        
+        /* Sports Icons - Enhanced with Color Variations */
+        .icon-chess { top: 12%; left: 42%; --rotation: 15deg; color: rgba(255, 220, 100, 0.8); }
+        .icon-badminton { top: 22%; left: 48%; --rotation: -25deg; color: rgba(100, 255, 150, 0.8); }
+        .icon-carrom { top: 32%; left: 52%; --rotation: 30deg; color: rgba(255, 100, 150, 0.8); }
+        .icon-trophy { top: 42%; left: 58%; --rotation: -10deg; color: rgba(255, 200, 50, 0.8); }
+        .icon-sports { top: 52%; left: 42%; --rotation: 20deg; color: rgba(50, 200, 255, 0.8); }
+        .icon-medal { top: 18%; right: 28%; --rotation: -30deg; color: rgba(255, 150, 50, 0.8); }
+        .icon-racket { top: 28%; right: 38%; --rotation: 25deg; color: rgba(100, 255, 255, 0.8); }
+        .icon-board { top: 38%; right: 48%; --rotation: -15deg; color: rgba(200, 150, 255, 0.8); }
+        .icon-winner { top: 48%; right: 32%; --rotation: 20deg; color: rgba(255, 255, 100, 0.8); }
+        .icon-game { top: 58%; left: 28%; --rotation: -20deg; color: rgba(255, 100, 255, 0.8); }
+        
+        /* Mixed Icons - Enhanced Visibility */
+        .icon-star1 { top: 65%; left: 8%; --rotation: 10deg; color: rgba(255, 255, 200, 0.8); }
+        .icon-star2 { top: 75%; left: 18%; --rotation: -20deg; color: rgba(200, 255, 200, 0.8); }
+        .icon-star3 { top: 85%; left: 28%; --rotation: 15deg; color: rgba(200, 200, 255, 0.8); }
+        .icon-star4 { top: 70%; right: 8%; --rotation: -25deg; color: rgba(255, 200, 200, 0.8); }
+        .icon-star5 { top: 80%; right: 18%; --rotation: 30deg; color: rgba(255, 255, 150, 0.8); }
+        .icon-star6 { top: 90%; right: 28%; --rotation: -15deg; color: rgba(150, 255, 255, 0.8); }
+        .icon-star7 { top: 60%; left: 62%; --rotation: 25deg; color: rgba(255, 150, 255, 0.8); }
+        .icon-star8 { top: 70%; left: 72%; --rotation: -10deg; color: rgba(150, 255, 150, 0.8); }
+        .icon-star9 { top: 80%; left: 82%; --rotation: 20deg; color: rgba(150, 150, 255, 0.8); }
+        .icon-star10 { top: 90%; left: 88%; --rotation: -30deg; color: rgba(255, 200, 150, 0.8); }
+
+        /* ENHANCED: Add some larger, more prominent icons */
+        .icon-large {
+            font-size: 64px;
+            opacity: 0.9;
+            z-index: 2;
+        }
+
+        .icon-featured1 { top: 20%; left: 50%; transform: translateX(-50%); color: rgba(255, 100, 100, 0.9); }
+        .icon-featured2 { top: 50%; right: 10%; color: rgba(100, 255, 100, 0.9); }
+        .icon-featured3 { bottom: 20%; left: 10%; color: rgba(100, 100, 255, 0.9); }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            padding: 32px 42px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header Section - Enhanced Professionalism */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            height: 75px;
+            position: relative;
+            height: 125px;
+        }
+
+        .logo-circle1 {
+            width: 110px;
+            height: 125px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            left: 1px;
+            top: 70px;
+
+        }
+        .logo-circle2 {
+            width: 140px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: absolute;
+            right: -18px;
+            top: 70px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .logo-circle1:hover {
+            transform: translateY(-2px) scale(1.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .logo-circle1::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+            z-index: 1;
+            border-radius: 50%;
+        }
+        .logo-circle2:hover {
+            transform: translateY(-2px) scale(1.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .logo-circle2::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+            z-index: 1;
+            border-radius: 50%;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            border-radius: 50%;
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%);
+            color: white;
+            font-size: 14px;
+            font-weight: 800;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            border-radius: 50%;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo-text {
+            font-size: 9px;
+            margin-top: 2px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        .organization {
+            margin-top: 0px; /* Adjust to vertically center between logos */
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .org-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #a5b4fc;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(90deg, #a5b4fc, #c7d2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+        }
+
+        .org-address {
+            font-size: 16px;
+            font-weight: 400;
+            color: #e2e8f0;
+            opacity: 0.9;
+            line-height: 1.3;
+            letter-spacing: 0.3px;
+        }
+        .ashoka {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #a5edfc;
+            letter-spacing: 2px;
+            margin-top: -2px;
+            text-shadow: 0 4px 12px rgba(165, 180, 252, 0.4);
+            position: absolute;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            margin-top: 0px;
+            top: -59%;
+        }
+
+        .ashoka::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -40px;
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #a5b4fc);
+            border-radius: 1px;
+        }
+
+        .ashoka::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, #a5b4fc, transparent);
+            border-radius: 1px;
+        }
+
+        /* Main Title Section - Enhanced */
+        .title-section {
+            text-align: center;
+            margin-bottom: 18px;
+            height: 102px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .presents {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #c084fc;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 12px rgba(192, 132, 252, 0.4);
+            position: relative;
+            display: inline-block;
+        }
+
+        .presents::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c084fc, transparent);
+            border-radius: 1px;
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 0.9;
+            background: linear-gradient(90deg, #fbbf24, #f87171, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3px;
+            text-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .event-title:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .event-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fbbf24, #a78bfa, transparent);
+            border-radius: 1px;
+            opacity: 0.5;
+        }
+
+        .event-year {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #a5b4fc;
+            letter-spacing: 6px;
+            margin-top: -2px;
+            text-shadow: 0 4px 12px rgba(165, 180, 252, 0.4);
+            position: relative;
+            display: inline-block;
+        }
+
+        .event-year::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -40px;
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #a5b4fc);
+            border-radius: 1px;
+        }
+
+        .event-year::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, #a5b4fc, transparent);
+            border-radius: 1px;
+        }
+
+        /* Events Section - Professional Enhancement */
+        .events-container {
+            display: flex;
+            gap: 22px;
+            margin-bottom: 20px;
+            height: 362px;
+        }
+
+        .events-column {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 16px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .events-column:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 20px 48px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .events-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #8b5cf6, #3b82f6);
+            z-index: 2;
+        }
+
+        .section-header {
+            margin-bottom: 12px;
+            flex-shrink: 0;
+            height: 48px;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+        }
+
+        .section-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #fbbf24;
+            position: relative;
+            padding-bottom: 12px;
+            text-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+            width: 100%;
+        }
+
+        /* UPDATED: Full-width gradient underline with fade effect */
+        .section-tag::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                #f59e0b 0%, 
+                #fbbf24 25%, 
+                #8b5cf6 50%, 
+                #3b82f6 75%, 
+                transparent 100%);
+            border-radius: 2px;
+            opacity: 1; /* Static for capture */
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+        }
+
+        .event-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: calc(100% - 60px);
+        }
+
+        .event-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1;
+            min-height: 0;
+            max-height: calc(100% / 6);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.2s ease;
+        }
+
+        .event-row:hover {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            padding: 6px 8px;
+            transform: translateX(2px);
+        }
+
+        .event-row:last-child {
+            border-bottom: none;
+        }
+
+        .event-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            flex: 1;
+            padding-right: 12px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .event-timing {
+            font-size: 11.5px;
+            color: #e2e8f0;
+            font-weight: 500;
+            line-height: 1.1;
+            text-align: right;
+            white-space: nowrap;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .event-row:hover .event-timing {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Sports events layout */
+        .sports-column .event-list {
+            justify-content: space-between;
+        }
+
+        .sports-column .event-row {
+            max-height: calc(100% / 4);
+        }
+
+        /* FIXED: Logistics - Increased Height to Fit Text */
+        .logistics {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 20px;
+            height: 95px; /* INCREASED from 82px to 95px */
+        }
+
+        .logistics-box {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border-radius: 14px;
+            padding: 16px 18px; /* INCREASED top/bottom padding from 14px to 16px */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-width: 0;
+            box-shadow: 
+                0 12px 32px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            min-height: 100%; /* Ensure it takes full height of parent */
+        }
+
+        .logistics-box:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 16px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .logistics-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #a78bfa;
+            margin-bottom: 10px; /* INCREASED from 8px to 10px */
+            display: flex;
+            align-items: center;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .logistics-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 170px;
+            height: 2px;
+            background: linear-gradient(90deg, #a78bfa, transparent);
+            border-radius: 1px;
+        }
+
+        .logistics-details {
+            font-size: 12.5px;
+            line-height: 1.4; /* Ensure proper line height */
+            color: #e2e8f0;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        .logistics-details strong {
+            color: #fbbf24;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Adjusted Footer to maintain total height */
+        .footer {
+            margin-top: auto;
+            height: 232px; /* REDUCED from 242px to 232px to maintain total */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tagline {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: #a5b4fc;
+            margin-bottom: 18px;
+            padding: 0 12px;
+            line-height: 1.4;
+            text-shadow: 0 2px 8px rgba(165, 180, 252, 0.4);
+            letter-spacing: 0.8px;
+            position: relative;
+        }
+
+        .tagline::before, .tagline::after {
+            content: '❖';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #c084fc;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        .tagline::before {
+            left: 0;
+        }
+
+        .tagline::after {
+            right: 0;
+        }
+
+        .registration {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            height: 88px;
+            box-shadow: 
+                0 12px 36px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .registration:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 16px 44px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .cta-text {
+            font-size: 14.5px;
+            color: #e2e8f0;
+            flex-grow: 1;
+            padding-right: 20px;
+            line-height: 1.4;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            letter-spacing: 0.2px;
+        }
+
+        
+        .qr-container {
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .qr-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08),
+                rgba(255, 255, 255, 0.04)
+            );
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .qr-placeholder:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .qr-placeholder::before {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent 49%,
+                    #fff 49%,
+                    #fff 51%,
+                    transparent 51%
+                ),
+                linear-gradient(
+                    0deg,
+                    transparent 49%,
+                    #fff 49%,
+                    #fff 51%,
+                    transparent 51%
+                );
+            background-size: 15px 15px;
+            background-position: center;
+        }
+
+        .qr-text {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            font-size: 9.5px;
+            color: #94a3b8;
+            text-align: center;
+            white-space: nowrap;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .qr-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .committee {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            height: 95px; /* Slightly reduced from 98px */
+        }
+
+        .member {
+            flex: 1;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border-radius: 14px;
+            padding: 12px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 
+                0 8px 24px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .member:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 12px 32px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .member-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+            line-height: 1.2;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .member-role {
+            font-size: 11.5px;
+            color: #fbbf24;
+            font-style: italic;
+            margin-bottom: 6px;
+            line-height: 1.2;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .member-phone {
+            font-size: 11.5px;
+            color: #cbd5e1;
+            line-height: 1.2;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        /* Loading overlay styles */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #a78bfa;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .loading-progress {
+            color: #a5b4fc;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 750px) {
+            .poster-container {
+                transform: scale(0.9);
+                transform-origin: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .poster-container {
+                transform: scale(0.8);
+            }
+            
+            .icon {
+                font-size: 40px;
+            }
+            
+            .icon-large {
+                font-size: 50px;
+            }
+            
+            /* Adjust logistics for smaller screens */
+            .logistics {
+                flex-direction: column;
+                height: auto;
+                gap: 12px;
+            }
+            
+            .logistics-box {
+                height: 85px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .poster-container {
+                transform: scale(0.7);
+            }
+            
+            .icon {
+                font-size: 34px;
+            }
+            
+            .icon-large {
+                font-size: 44px;
+            }
+        }
+
+        /* Professional Print Styling */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+                overflow: visible;
+            }
+            
+            .poster-container {
+                box-shadow: none;
+                border-radius: 0;
+                border: none;
+                transform: none !important;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 700/1050;
+            }
+            
+            .icon {
+                opacity: 0.25 !important;
+                filter: none !important;
+                text-shadow: 0 0 15px rgba(0,0,0,0.1) !important;
+            }
+            
+            .logo-circle1,.logo-circle2, .events-column, .logistics-box, .registration, .member {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        <!-- Advanced CSS Background -->
+        <div class="background">
+            <div class="animated-mesh"></div>
+            <div class="gradient-spot spot-1"></div>
+            <div class="gradient-spot spot-2"></div>
+            <div class="gradient-spot spot-3"></div>
+        </div>
+        
+        <!-- ENHANCED: Background Icons - Significantly Improved Visibility -->
+        <div class="background-icons">
+            <!-- Cultural Icons -->
+            <div class="icon icon-music">🎵</div>
+            <div class="icon icon-microphone">🎤</div>
+            <div class="icon icon-book">📚</div>
+            <div class="icon icon-debate">🗣️</div>
+            <div class="icon icon-quiz">❓</div>
+            <div class="icon icon-speak">💬</div>
+            <div class="icon icon-singing">🎶</div>
+            <div class="icon icon-drama">🎭</div>
+            <div class="icon icon-art">🎨</div>
+            <div class="icon icon-culture">🏛️</div>
+            
+            <!-- Sports Icons -->
+            <div class="icon icon-chess">♟️</div>
+            <div class="icon icon-badminton">🏸</div>
+            <div class="icon icon-carrom">●</div>
+            <div class="icon icon-trophy">🏆</div>
+            <div class="icon icon-sports">⚽</div>
+            <div class="icon icon-medal">🥇</div>
+            <div class="icon icon-racket">🎾</div>
+            <div class="icon icon-board">♟️</div>
+            <div class="icon icon-winner">🏅</div>
+            <div class="icon icon-game">🎵</div>
+            
+            <!-- Mixed Icons -->
+            <div class="icon icon-star1">✨</div>
+            <div class="icon icon-star2">🎾</div>
+            <div class="icon icon-star3">♟️</div>
+            <div class="icon icon-star4">🎭</div>
+            <div class="icon icon-star5">🏆</div>
+            <div class="icon icon-star6">🎵</div>
+            <div class="icon icon-star7">🎼</div>
+            <div class="icon icon-star8">🏸</div>
+            <div class="icon icon-star9">🎨</div>
+            <div class="icon icon-star10">●</div>
+            
+            <!-- Featured Larger Icons for Better Visibility -->
+            <div class="icon icon-large icon-featured1">🏆</div>
+            <div class="icon icon-large icon-featured2">🎭</div>
+            <div class="icon icon-large icon-featured3">🎵</div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Header with circular logo placeholders -->
+            <div class="header">
+                <div class="logo-circle1">
+                    <!-- Left Circular Image Placeholder -->
+                    <div class="logo-placeholder">
+                        <!-- <div>AS</div>
+                        <div class="logo-text">Ashoka<br>Sangha</div> -->
+                    </div>
+                    <img src="./person.jpeg" alt="Ashoka Sangha Logo" class="logo-img">
+                </div>
+                
+                <div class="organization">
+                    <div class="org-name">Sahukar B K Mariappa's Charities</div>
+                    <div class="org-address">3rd Main Road, Chamrajpet, Bengaluru - 560018</div>
+                </div>
+                
+                <div class="logo-circle2">
+                    <!-- Right Circular Image Placeholder -->
+                    <div class="logo-placeholder">
+                        <!-- <div>SB</div> -->
+                        <!-- <div class="logo-text">Sahukar<br>Charities</div> -->
+                    </div>
+                    <img src="./hostel.jpg" alt="Sahukar Charities Logo" class="logo-img">
+                </div>
+            </div>
+            
+            <!-- Main Title -->
+            <div class="title-section">
+                <div class="ashoka">ASHOKA SANGHA</div>
+                <div class="presents">Presents</div>
+                <div class="event-title" id="downloadTrigger">ABHYUDAYA</div>
+                <div class="event-year">2K26</div>
+            </div>
+            
+            <!-- Events Section -->
+            <div class="events-container">
+                <div class="events-column">
+                    <div class="section-header">
+                        <div class="section-tag">Cultural Events</div>
+                    </div>
+                    
+                    <div class="event-list">
+                        <div class="event-row">
+                            <div class="event-name">Janapada Geethe</div>
+                            <div class="event-timing">22/02/2026<br>10:00 AM</div>
+                        </div>
+                        <div class="event-row">
+                            <div class="event-name">Bhava Geethe</div>
+                            <div class="event-timing">22/02/2026<br>11:30 AM</div>
+                        </div>
+                        <div class="event-row">
+                            <div class="event-name">Anthakshari</div>
+                            <div class="event-timing">22/02/2026<br>02:00 PM</div>
+                        </div>
+                        <div class="event-row">
+                            <div class="event-name">Quiz</div>
+                            <div class="event-timing">23/02/2026<br>10:30 AM</div>
+                        </div>
+                        <div class="event-row">
+                            <div class="event-name">Debate</div>
+                            <div class="event-timing">23/02/2026<br>11:30 AM</div>
+                        </div>
+                        <div class="event-row">
+                            <div class="event-name">Pick & Speak</div>
+                            <div class="event-timing">23/02/2026<br>03:30 PM</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="events-column sports-column">
+                    <div class="section-header">
+                        <div class="section-tag">Sports Events</div>
+                    </div>
+                    
+                    <div class="event-list">
+                        <div class="event-row">
+                            <div class="event-name">Chess</div>
+                            <div class="event-timing">08/03/2026<br>09:00 AM</div>
+                        </div>
+                        <div class="event-row">
+                            <div class="event-name">Carrom</div>
+                            <div class="event-timing">08/03/2026<br>09:00 AM</div>
+                        </div>
+                        <div class="event-row">
+                            <div class="event-name">Badminton (Singles)</div>
+                            <div class="event-timing">09/03/2026<br>09:00 AM</div>
+                        </div>
+                        <div class="event-row">
+                            <div class="event-name">Badminton (Doubles)</div>
+                            <div class="event-timing">16/03/2026<br>09:00 AM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FIXED: Logistics Boxes with Proper Height -->
+            <div class="logistics">
+                <div class="logistics-box">
+                    <div class="logistics-title">Cultural Events</div>
+                    <div class="logistics-details">
+                        <strong>Dates:</strong> 22/02/2026 – 23/02/2026<br>
+                        <strong>Venue:</strong> Sri Ramakrishna Students' Home, V V Puram
+                    </div>
+                </div>
+                
+                <div class="logistics-box">
+                    <div class="logistics-title">Sports Events</div>
+                    <div class="logistics-details">
+                        <strong>Dates:</strong> 08/03/2026 – 16/03/2026<br>
+                        <strong>Venue:</strong> Chamarajapet & Jayanagar
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <div class="tagline">— Celebrating Talent, Culture & Sports —</div>
+                
+                <div class="registration">
+                    <div class="cta-text">Scan the QR code for registration and more information.</div>
+                    <div class="qr-container">
+                        <img src="./qr.png" alt="QR Code" class="qr-img">
+                    </div>
+                </div>
+                
+                <div class="committee">
+                    <div class="member">
+                        <div class="member-name">Shashanka Upadhyaya</div>
+                        <div class="member-role">General Secretary</div>
+                        <div class="member-phone">8867347447</div>
+                    </div>
+                    
+                    <div class="member">
+                        <div class="member-name">Ganesh Tarun B</div>
+                        <div class="member-role">Cultural Secretary</div>
+                        <div class="member-phone">8867245265</div>
+                    </div>
+                    
+                    <div class="member">
+                        <div class="member-name">Pavan Kulakarni</div>
+                        <div class="member-role">Sports Secretary</div>
+                        <div class="member-phone">7019458384</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadTrigger = document.getElementById('downloadTrigger');
+            let isDownloading = false;
+            
+            downloadTrigger.addEventListener('click', async function() {
+                if (isDownloading) return;
+                isDownloading = true;
+                
+                // Create loading overlay
+                const loadingOverlay = document.createElement('div');
+                loadingOverlay.className = 'loading-overlay';
+                loadingOverlay.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Generating High-Resolution Poster</div>
+                    <div class="loading-progress">Preparing canvas...</div>
+                `;
+                document.body.appendChild(loadingOverlay);
+                
+                try {
+                    const posterContainer = document.querySelector('.poster-container');
+                    const progressText = loadingOverlay.querySelector('.loading-progress');
+                    
+                    // Store original styles
+                    const originalStyles = {
+                        transform: posterContainer.style.transform,
+                        width: posterContainer.style.width,
+                        height: posterContainer.style.height,
+                        position: posterContainer.style.position,
+                        top: posterContainer.style.top,
+                        left: posterContainer.style.left,
+                        zIndex: posterContainer.style.zIndex
+                    };
+                    
+                    // Remove any responsive scaling for capture
+                    posterContainer.style.transform = 'none';
+                    posterContainer.style.width = '700px';
+                    posterContainer.style.height = '1050px';
+                    
+                    // Position it for clean capture
+                    posterContainer.style.position = 'fixed';
+                    posterContainer.style.top = '0';
+                    posterContainer.style.left = '0';
+                    posterContainer.style.zIndex = '10000';
+                    
+                    // Force a reflow to apply styles
+                    posterContainer.offsetHeight;
+                    
+                    progressText.textContent = 'Capturing poster...';
+                    
+                    // Wait a bit for everything to render
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    // Use html2canvas with scale for high resolution
+                    const canvas = await html2canvas(posterContainer, {
+                        scale: 4, // 4x scale for high resolution (2800x4200 pixels)
+                        backgroundColor: '#0a0a14',
+                        useCORS: true,
+                        allowTaint: true,
+                        logging: false,
+                        onclone: function(clonedDoc) {
+                            // Ensure all elements are visible
+                            const elements = clonedDoc.querySelectorAll('*');
+                            elements.forEach(el => {
+                                if (el.style.animation) {
+                                    el.style.animation = 'none';
+                                }
+                            });
+                        }
+                    });
+                    
+                    progressText.textContent = 'Converting to PNG format...';
+                    
+                    // Convert to PNG with maximum quality
+                    const pngData = canvas.toDataURL('image/png', 1.0);
+                    
+                    progressText.textContent = 'Starting download...';
+                    
+                    // Create download link
+                    const link = document.createElement('a');
+                    const timestamp = new Date().toISOString()
+                        .replace(/[:.]/g, '-')
+                        .replace('T', '_')
+                        .substring(0, 19);
+                    link.download = `ABHYUDAYA-2K26-Poster-${timestamp}.png`;
+                    link.href = pngData;
+                    
+                    // Trigger download
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Restore original styles
+                    Object.keys(originalStyles).forEach(key => {
+                        posterContainer.style[key] = originalStyles[key];
+                    });
+                    
+                    // Update progress to success
+                    progressText.textContent = '✅ Poster downloaded successfully!';
+                    loadingOverlay.querySelector('.loading-text').textContent = 'Success!';
+                    
+                    // Remove loading overlay after delay
+                    setTimeout(() => {
+                        if (document.body.contains(loadingOverlay)) {
+                            document.body.removeChild(loadingOverlay);
+                        }
+                        isDownloading = false;
+                    }, 1500);
+                    
+                } catch (error) {
+                    console.error('Error generating poster:', error);
+                    
+                    // Try fallback method
+                    try {
+                        progressText.textContent = 'Trying alternative method...';
+                        
+                        // Simple fallback method
+                        const posterContainer = document.querySelector('.poster-container');
+                        const canvas = await html2canvas(posterContainer, {
+                            scale: 2, // Lower scale
+                            backgroundColor: '#0a0a14',
+                            useCORS: true
+                        });
+                        
+                        const pngData = canvas.toDataURL('image/png');
+                        const link = document.createElement('a');
+                        const timestamp = new Date().toISOString()
+                            .replace(/[:.]/g, '-')
+                            .replace('T', '_')
+                            .substring(0, 19);
+                        link.download = `ABHYUDAYA-2K26-Poster-${timestamp}.png`;
+                        link.href = pngData;
+                        
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        progressText.textContent = '✅ Poster downloaded (lower resolution)!';
+                        loadingOverlay.querySelector('.loading-text').textContent = 'Success!';
+                        
+                        setTimeout(() => {
+                            if (document.body.contains(loadingOverlay)) {
+                                document.body.removeChild(loadingOverlay);
+                            }
+                            isDownloading = false;
+                        }, 1500);
+                        
+                    } catch (fallbackError) {
+                        console.error('Fallback also failed:', fallbackError);
+                        
+                        // Show error message
+                        const progressText = loadingOverlay.querySelector('.loading-progress');
+                        progressText.textContent = 'Error: Could not generate poster.';
+                        progressText.style.color = '#ff6b6b';
+                        
+                        // Remove loading overlay after delay
+                        setTimeout(() => {
+                            if (document.body.contains(loadingOverlay)) {
+                                document.body.removeChild(loadingOverlay);
+                            }
+                            isDownloading = false;
+                        }, 3000);
+                    }
+                }
+            });
+            
+            // Add tooltip hint
+            downloadTrigger.title = 'Click to download high-resolution PNG poster';
+        });
+    </script>
+</body>
+</html>
